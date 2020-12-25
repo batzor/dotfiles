@@ -78,9 +78,18 @@ set cmdheight=2
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Display signs in the number column
+set signcolumn=number
+
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
-
 
 "------------------------------------------------------------
 " Indentation options
@@ -124,14 +133,40 @@ let g:molokai_original = 1
 set termwinsize=12x0
 cabbrev bterm bo term
 
+"====================     PLUGINS     =======================
+"------------------------------------------------------------
+" NERDTree
 
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" NERDTree mappings
+nnoremap <C-n> :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 
 "------------------------------------------------------------
-" Plugin Configs
+" COC
 
-" NERDTree
-let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-nnoremap <Leader>e :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>f :NERDTreeFind<CR>
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
