@@ -30,6 +30,13 @@ set hlsearch
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 set nomodeline
 
+" Setup persistent undo
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+let myUndoDir = expand(vimDir . '/undodir')
+call system('mkdir ' . myUndoDir)
+let &undodir = myUndoDir
+set undofile
 
 "------------------------------------------------------------
 " Usability options
@@ -115,7 +122,7 @@ set expandtab
 " which is the default
 map Y y$
 
-" Map <C-/> to suspend vim and on bashrc <C-/> is mapped to fg for cyclic 
+" Map <C-/> to suspend vim and on bashrc <C-/> is binded to fg for cyclic 
 " usage.
 map  
 
@@ -139,6 +146,10 @@ cabbrev bterm bo term
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
+
+" Close NERDTree when all buffers are closed
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+      \ && b:NERDTree.isTabTree()) | q | endif
 
 " NERDTree mappings
 nnoremap <C-n> :NERDTreeFocus<CR>
