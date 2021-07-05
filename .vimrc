@@ -78,8 +78,15 @@ set t_vb=
 " "press <Enter> to continue"
 set cmdheight=2
 
-" Display line numbers on the left
+" Display hybrid line numbers on the left
 :set number relativenumber
+
+" Toggle to absolute on switching
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set number relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
 
 
 " Quickly time out on keycodes, but never time out on mappings
@@ -178,3 +185,4 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+source ~/.vim/colors/molokai.vim
