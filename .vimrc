@@ -93,7 +93,7 @@ set updatetime=300
 set shortmess+=c
 
 " Display signs in the number column
-set signcolumn=number
+set signcolumn=yes
 
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
@@ -136,9 +136,6 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Use molokai theme
 let g:molokai_original = 1
 
-" Set terminal size and make it split bottom 'globally'
-set termwinsize=12x0
-cabbrev bterm bo term
 
 "====================     PLUGINS     =======================
 "------------------------------------------------------------
