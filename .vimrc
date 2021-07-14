@@ -11,7 +11,7 @@ set nocompatible
 filetype indent plugin on
 
 " Enable syntax highlighting
-syntax on
+syntax enable
 
 " Allow easier switching between files.
 set hidden
@@ -116,11 +116,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-"set tabstop=4
-
 
 "------------------------------------------------------------
 " Mappings
@@ -138,11 +133,11 @@ map  
 nnoremap <C-L> :nohl<CR><C-L>
 
 "------------------------------------------------------------
-" Styling
-
-" Use molokai theme
-let g:molokai_original = 1
-
+" Colorscheme
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
+call togglebg#map("<F5>")
 
 "====================     PLUGINS     =======================
 "------------------------------------------------------------
@@ -185,4 +180,3 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-source ~/.vim/colors/molokai.vim
