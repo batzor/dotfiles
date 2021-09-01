@@ -150,6 +150,9 @@ autocmd VimEnter * NERDTree | wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
       \ && b:NERDTree.isTabTree()) | q | endif
 
+" Ignore useless files in NERDTree
+let g:NERDTreeIgnore=['\.o$']
+
 " NERDTree mappings
 nnoremap <C-n> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
