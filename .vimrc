@@ -126,20 +126,39 @@ map Y y$
 
 " Map <C-/> to suspend vim and on bashrc <C-/> is binded to fg for cyclic 
 " usage.
-map  
+map  
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Map <s-J> <s-K> to move selected lines up or down 
+vnoremap <silent> <s-J> :m '>+1<CR>gv
+vnoremap <silent> <s-K> :m '<-2<CR>gv
+
 "------------------------------------------------------------
 " Colorscheme
-let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
-call togglebg#map("<F5>")
+
+" Solarized
+"set background=light
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"call togglebg#map("<F5>")
+
+" Catppuccin
+let g:lightline = {'colorscheme': 'catppuccin_mocha'}
+colorscheme catppuccin_latte
 
 "====================     PLUGINS     =======================
+
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'petRUShka/vim-sage'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-python/python-syntax'
+Plug 'itchyny/lightline.vim'
+call plug#end()
+
 "------------------------------------------------------------
 " NERDTree
 
@@ -186,9 +205,3 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'petRUShka/vim-sage'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'vim-python/python-syntax'
-call plug#end()
