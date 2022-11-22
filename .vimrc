@@ -1,3 +1,4 @@
+
 "------------------------------------------------------------
 " Must have options
 
@@ -136,19 +137,6 @@ nnoremap <C-L> :nohl<CR><C-L>
 vnoremap <silent> <s-J> :m '>+1<CR>gv
 vnoremap <silent> <s-K> :m '<-2<CR>gv
 
-"------------------------------------------------------------
-" Colorscheme
-
-" Solarized
-"set background=light
-"let g:solarized_termcolors=256
-"colorscheme solarized
-"call togglebg#map("<F5>")
-
-" Catppuccin
-let g:lightline = {'colorscheme': 'catppuccin_mocha'}
-colorscheme catppuccin_latte
-
 "====================     PLUGINS     =======================
 
 call plug#begin()
@@ -157,6 +145,7 @@ Plug 'petRUShka/vim-sage'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 "------------------------------------------------------------
@@ -205,3 +194,15 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+"------------------------------------------------------------
+" Colorscheme
+
+" Solarized
+"set background=light
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"call togglebg#map("<F5>")
+
+" Catppuccin
+let g:lightline = {'colorscheme': 'catppuccin_mocha'}
+colorscheme catppuccin_mocha
