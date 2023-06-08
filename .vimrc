@@ -169,7 +169,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 " COC
 
 " Coc Extensions
-let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-clangd']
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
