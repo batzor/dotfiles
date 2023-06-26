@@ -149,27 +149,10 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 "------------------------------------------------------------
-" NERDTree
-
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
-
-" Close NERDTree when all buffers are closed
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
-      \ && b:NERDTree.isTabTree()) | q | endif
-
-" Ignore useless files in NERDTree
-let g:NERDTreeIgnore=['\.o$']
-
-" NERDTree mappings
-nnoremap <C-n> :NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-
-"------------------------------------------------------------
 " COC
 
 " Coc Extensions
-let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-clangd']
+let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-clangd', 'coc-explorer']
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -188,11 +171,18 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Coc Explorer
+" Open explorer
+nmap <leader>e :CocCommand explorer<CR>
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+nmap <silent> <leader>a <Plug>(coc-fix-current)
+
 
 "------------------------------------------------------------
 " Colorscheme
