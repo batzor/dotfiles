@@ -159,6 +159,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <silent> <leader>j :call CocAction('diagnosticNext')<cr>
+nmap <silent> <leader>k :call CocAction('diagnosticPrevious')<cr>
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -188,6 +191,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Quick fix
 nmap <silent> <leader>a <Plug>(coc-fix-current)
 
 
