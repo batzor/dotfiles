@@ -172,6 +172,13 @@ function! s:show_documentation()
 endfunction
 
 " Coc Explorer
+" Use as default explorer
+augroup MyCocExplorer
+  autocmd!
+  autocmd VimEnter * sil! au! FileExplorer *
+  autocmd BufEnter * let d = expand('%') | if isdirectory(d) | silent! bd | exe 'CocCommand explorer ' . d | endif
+augroup END
+
 " Open explorer
 nmap <leader>e :CocCommand explorer<CR>
 
