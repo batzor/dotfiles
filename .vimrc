@@ -146,13 +146,18 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
 call plug#end()
+
+let g:lsc_auto_map = v:true
 
 "------------------------------------------------------------
 " COC
 
 " Coc Extensions
-let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-clangd', 'coc-explorer']
+let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-clangd', 'coc-flutter', 'coc-pyright', 'coc-explorer']
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
